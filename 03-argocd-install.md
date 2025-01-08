@@ -36,3 +36,17 @@ and change the type to NodePort from ClusterIP
 5) ## get the initial password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
+6) ## Install the Argocd CLI
+
+7) ## Login to argocd using the CLI
+  argocd login argocd-api-server-ip-address:port
+  admin
+  ******** (Password)
+
+8) ## Get the context
+   KUBECTL CONFIG GET CONTEXT | GREP US-WEST1
+   
+9) ## Add spoke cluster to HUB
+    argocd cluster add <CONTEXT-NAME-OF-THE-SPOKE> --SERVER <IP-Of-The-Hub:PORT>
+
+   Repeat for the another cluster -> repeat for more
