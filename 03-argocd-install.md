@@ -31,3 +31,5 @@ kubectl edit svc argocd-server -n argocd
 
 and change the type to NodePort from ClusterIP
 
+4) Edit the inbound configuration rules for the security group/firewall rules to enable the inbound request for http (80)/https (443) for the specific ports
+
