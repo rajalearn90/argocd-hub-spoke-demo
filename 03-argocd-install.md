@@ -9,7 +9,18 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 ## Run Argo CD in HTTP Mode(Insecure)
 
-https://github.com/argoproj/argo-cd/blob/54f1572d46d8d611018f4854cf2f24a24a3ac088/docs/operator-manual/argocd-cmd-params-cm.yaml#L82
+* kubectl get cm -n argocd
+argocd-cmd-params-cm is the config map we need to do the changes
+
+* kubectl edit configmap argocd-cmd-params-cm -n argocd
+
+* * In this add a entry
+data:
+  server.insecure: "false"
+
+(kubectl decribe deployement /argocd-server -n argocd - this deployment will use the configmap that we are changing above)
+
+REF: https://github.com/argoproj/argo-cd/blob/54f1572d46d8d611018f4854cf2f24a24a3ac088/docs/operator-manual/argocd-cmd-params-cm.yaml#L82
 
 ## Expose Argo CD Server Service in NodePort Mode
 
